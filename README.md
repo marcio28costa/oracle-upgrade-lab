@@ -1,21 +1,40 @@
 # 🚀 Oracle Upgrade Lab: 19c → 23c (Oracle AI Database)
 
 ## 📌 Overview
-Hands-on upgrade using AutoUpgrade.
+Hands-on upgrade using AutoUpgrade in a local lab.
 
 ## 🧪 Environment
 - Oracle Linux 8.10
 - 4GB RAM
 - CDB + PDB
 
-## 📸 Screenshots
-Place images in /images folder.
+---
 
-![Analyze](images/analyze.png)
-![FRA Fix](images/fra_fix.png)
-![Archivelog](images/archivelog.png)
-![Upgrade Progress](images/upgrade.png)
-![Final Version](images/final.png)
+## 📸 Upgrade Steps (Real Screenshots)
+
+### Analyze Phase
+![Step1](images/upgrade_step1.png)
+![Step2](images/upgrade_step2.png)
+
+### Fix FRA / Archivelog
+![Step3](images/upgrade_step3.png)
+![Step4](images/upgrade_step4.png)
+
+### Deploy (Upgrade Running)
+![Step5](images/upgrade_step5.png)
+![Step6](images/upgrade_step6.png)
+![Step7](images/upgrade_step7.png)
+
+### Monitoring Progress
+![Step8](images/upgrade_step8.png)
+![Step9](images/upgrade_step9.png)
+
+### Final Result
+![Step10](images/upgrade_step10.png)
+![Step11](images/upgrade_step11.png)
+![Step12](images/upgrade_step12.png)
+
+---
 
 ## 🚀 Commands
 
@@ -24,26 +43,14 @@ Place images in /images folder.
 java -jar autoupgrade.jar -config config.cfg -mode analyze
 ```
 
-### Fix FRA
-```
-alter system set db_recovery_file_dest_size=10G scope=both;
-alter system set db_recovery_file_dest='/u01/app/oracle/fast_recovery_area' scope=both;
-```
-
-### Enable Archivelog
-```
-shutdown immediate;
-startup mount;
-alter database archivelog;
-alter database open;
-```
-
 ### Deploy
 ```
 java -jar autoupgrade.jar -config config.cfg -mode deploy
 ```
 
-## ✅ Result
+---
+
+## 🏆 Result
 Oracle Database 23c (AI Database)
 
 ---
